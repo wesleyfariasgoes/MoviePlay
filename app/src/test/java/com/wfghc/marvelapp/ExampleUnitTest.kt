@@ -1,4 +1,4 @@
-package com.wfghc.movieplay
+package com.wfghc.marvelapp
 
 import org.junit.Test
 

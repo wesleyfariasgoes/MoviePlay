@@ -1,11 +1,11 @@
-package com.wfghc.movieplay
+package com.wfghc.marvelapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
-import com.wfghc.movieplay.databinding.ActivityMainBinding
+import com.wfghc.marvelapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
@@ -20,6 +20,8 @@ class MainActivity : AppCompatActivity() {
             .findFragmentById(R.id.nav_host_container) as NavHostFragment
 
         navController = navHostFragment.navController
-        appBarConfiguration = AppBarConfiguration(setOf())
+        appBarConfiguration = AppBarConfiguration(
+            setOf()
+        )
     }
 }

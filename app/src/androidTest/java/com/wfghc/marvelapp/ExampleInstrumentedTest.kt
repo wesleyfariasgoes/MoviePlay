@@ -1,4 +1,4 @@
-package com.wfghc.movieplay
+package com.wfghc.marvelapp
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
