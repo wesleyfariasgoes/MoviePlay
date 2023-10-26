@@ -1,4 +1,4 @@
-package com.wfghc.core.data.network.response
+package com.wfghc.marvelapp.framework.network.response
 
 data class DataWrapperResponse(
     val copyright: String,

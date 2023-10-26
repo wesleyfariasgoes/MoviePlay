@@ -1,7 +1,8 @@
 package com.wfghc.marvelapp.framework.di
 
-import com.wfghc.core.data.network.AuthorizationInterceptor
+import com.wfghc.marvelapp.framework.network.AuthorizationInterceptor
 import com.wfghc.marvelapp.BuildConfig
+import com.wfghc.marvelapp.framework.network.MarvelApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -64,11 +65,12 @@ object NetworkModule {
     fun provideRetrofit(
         okHttpClient: OkHttpClient,
         converterFactory: GsonConverterFactory
-    ): Retrofit {
+    ): MarvelApi {
         return Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(converterFactory)
             .build()
+            .create(MarvelApi::class.java)
     }
 }
