@@ -11,7 +11,7 @@ class CharactersRepositoryImpl @Inject constructor(
     private val remoteDataSource: CharactersRemoteDataSource<DataWrapperResponse>
 ): CharactersRepository {
     override fun getCharacters(query: String): PagingSource<Int, Character> {
-        return CharactersPaging()
+        TODO("Not yet implemented")
     }
 
 }
