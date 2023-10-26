@@ -1,4 +1,4 @@
-package com.wfghc.core.data.network.response
+package com.wfghc.marvelapp.framework.network.response
 
 import com.google.gson.annotations.SerializedName
 
