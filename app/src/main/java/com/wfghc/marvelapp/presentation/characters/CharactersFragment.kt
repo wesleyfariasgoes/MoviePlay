@@ -5,12 +5,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.wfghc.core.domain.model.Character
 import com.wfghc.marvelapp.R
 import com.wfghc.marvelapp.databinding.FragmentCharactersBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
@@ -18,6 +22,8 @@ class CharactersFragment : Fragment() {
 
     private var _binding: FragmentCharactersBinding? = null
     private val binding: FragmentCharactersBinding get() = _binding!!
+
+    private val viewModel: CharactersViewModel by viewModels()
 
     private val charaptersAdapter = CharactersAdapter()
     override fun onCreateView(
@@ -34,37 +40,13 @@ class CharactersFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initCharacterAdapter()
-        charaptersAdapter.submitList(
-            listOf(
-                Character("3D-Man","https://cdn.marvel.com/u/prod/marvel/i/mg/c/10/5a612c90dfdb5/portrait_uncanny.jpg"),
-                Character("3D-Man","https://cdn.marvel.com/u/prod/marvel/i/mg/c/10/5a612c90dfdb5/portrait_uncanny.jpg"),
-                Character("3D-Man","https://cdn.marvel.com/u/prod/marvel/i/mg/c/10/5a612c90dfdb5/portrait_uncanny.jpg"),
-                Character("3D-Man","https://cdn.marvel.com/u/prod/marvel/i/mg/c/10/5a612c90dfdb5/portrait_uncanny.jpg"),
-                Character("3D-Man","https://cdn.marvel.com/u/prod/marvel/i/mg/c/10/5a612c90dfdb5/portrait_uncanny.jpg"),
-                Character("3D-Man","https://cdn.marvel.com/u/prod/marvel/i/mg/c/10/5a612c90dfdb5/portrait_uncanny.jpg"),
-                Character("3D-Man","https://cdn.marvel.com/u/prod/marvel/i/mg/c/10/5a612c90dfdb5/portrait_uncanny.jpg"),
-                Character(
-                    "3D-Man",
-                    "https://cdn.marvel.com/u/prod/marvel/i/mg/c/10/5a612c90dfdb5/portrait_uncanny.jpg"
-                ),
-                Character(
-                    "3D-Man",
-                    "https://cdn.marvel.com/u/prod/marvel/i/mg/c/10/5a612c90dfdb5/portrait_uncanny.jpg"
-                ),
-                Character(
-                    "3D-Man",
-                    "https://cdn.marvel.com/u/prod/marvel/i/mg/c/10/5a612c90dfdb5/portrait_uncanny.jpg"
-                ),
-                Character(
-                    "3D-Man",
-                    "https://cdn.marvel.com/u/prod/marvel/i/mg/c/10/5a612c90dfdb5/portrait_uncanny.jpg"
-                ),
-                Character(
-                    "3D-Man",
-                    "https://cdn.marvel.com/u/prod/marvel/i/mg/c/10/5a612c90dfdb5/portrait_uncanny.jpg"
-                )
-            )
-        )
+
+        lifecycleScope.launch {
+            viewModel.charactersPagingData("").collect { paginData ->
+                charaptersAdapter.submitData(paginData)
+
+            }
+        }
     }
 
     @Suppress("MagicNumber")

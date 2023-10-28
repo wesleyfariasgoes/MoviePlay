@@ -3,18 +3,21 @@ package com.wfghc.marvelapp.presentation.characters
 import android.os.Parcel
 import android.os.Parcelable
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.wfghc.core.domain.model.Character
 
-class CharactersAdapter : ListAdapter<Character, CharacterViewHolder>(differCallback) {
+class CharactersAdapter : PagingDataAdapter<Character, CharacterViewHolder>(differCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterViewHolder {
         return CharacterViewHolder.create(parent)
     }
 
     override fun onBindViewHolder(holder: CharacterViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        getItem(position)?.let {
+            holder.bind(it)
+        }
     }
 
     companion object {
@@ -23,7 +26,7 @@ class CharactersAdapter : ListAdapter<Character, CharacterViewHolder>(differCall
                 oldItem: Character,
                 newItem: Character
             ): Boolean {
-                 return oldItem.name == newItem.name
+                return oldItem.name == newItem.name
             }
 
             override fun areContentsTheSame(

@@ -1,8 +1,8 @@
-package com.wfghc.marvelapp.framework.remote
+package com.wfghc.marvelapp.data.remote
 
 import com.wfghc.core.data.repository.CharactersRemoteDataSource
-import com.wfghc.marvelapp.framework.network.MarvelApi
-import com.wfghc.marvelapp.framework.network.response.DataWrapperResponse
+import com.wfghc.marvelapp.data.network.MarvelApi
+import com.wfghc.marvelapp.data.network.response.DataWrapperResponse
 import javax.inject.Inject
 
 class RetrofitCharactersDataSource @Inject constructor(

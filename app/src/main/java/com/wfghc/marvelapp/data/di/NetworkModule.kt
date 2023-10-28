@@ -1,8 +1,8 @@
-package com.wfghc.marvelapp.framework.di
+package com.wfghc.marvelapp.data.di
 
-import com.wfghc.marvelapp.framework.network.AuthorizationInterceptor
+import com.wfghc.marvelapp.data.network.AuthorizationInterceptor
 import com.wfghc.marvelapp.BuildConfig
-import com.wfghc.marvelapp.framework.network.MarvelApi
+import com.wfghc.marvelapp.data.network.MarvelApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -1,6 +1,6 @@
-package com.wfghc.marvelapp.framework.network
+package com.wfghc.marvelapp.data.network
 
-import com.wfghc.marvelapp.framework.network.response.DataWrapperResponse
+import com.wfghc.marvelapp.data.network.response.DataWrapperResponse
 import retrofit2.http.GET
 import retrofit2.http.QueryMap
 

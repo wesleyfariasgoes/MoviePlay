@@ -1,4 +1,4 @@
-package com.wfghc.marvelapp.framework.network
+package com.wfghc.marvelapp.data.network
 
 import okhttp3.Interceptor
 import okhttp3.Response
