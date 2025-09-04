@@ -12,7 +12,6 @@ class AuthorizationInterceptor(
     private val calendar: Calendar
 ) : Interceptor {
 
-    @Suppress("MagicNumber")
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request()
         val requestUrl = request.url
